@@ -1,0 +1,71 @@
+.table_container {
+  max-width: 750px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+caption {
+  font-size: 90%;
+  margin-bottom: 10px;
+}
+
+.table th {
+  background: #3e4756;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1a1a1a;
+  font-weight: bold;
+  text-align: left;
+}
+
+.table th.up {
+  background-image: url("../imgs/up_arrow.png");
+}
+.table th.down {
+  background-image: url("../imgs/down_arrow.png");
+}
+.table th.default {
+  background-image: url("../imgs/default.png");
+}
+th.up,
+th.default,
+th.down {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.table td {
+  border-top: 1px solid gray;
+  padding: 8px 20px;
+}
+
+.table tbody tr:first-child td {
+  border-top: none;
+}
+
+.table tbody tr:nth-child(n) td {
+  background: #77859e;
+}
+
+.table tbody tr:nth-child(2n) td {
+  background: #3e4756;
+}
+
+.icon {
+  height: 5rem;
+  aspect-ratio: 1/1;
+  background-size: contain;
+  margin-right: 10%;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

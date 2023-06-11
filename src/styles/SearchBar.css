@@ -1,0 +1,13 @@
+.searchBar {
+  position: fixed;
+  top: 1.3vh;
+  right: 10vw;
+  border: 2px solid grey;
+  border-radius: 10px;
+  color: antiquewhite;
+  background-color: #77859e;
+  padding: 5px;
+}
+::placeholder {
+  color: antiquewhite;
+}
