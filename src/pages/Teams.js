@@ -62,7 +62,7 @@ const Teams = () => {
     } else {
       const filtered = initialData
         .filter((data) =>
-          data["championName"].toLowerCase().includes(query.toLowerCase())
+          data["team_name"].toLowerCase().includes(query.toLowerCase())
         )
         .map((data) => data);
       setTableData(filtered);
