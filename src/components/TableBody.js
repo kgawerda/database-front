@@ -7,7 +7,11 @@ const TableBody = ({ tableData, columns, images }) => {
             {columns.map(({ accessor }) => {
               const contains = (string) => {
                 const str = string.split(".")[0];
-                const cutData = data[accessor].split(" ")[0];
+                const cutData = data[accessor]
+                  .split(" ")[0]
+                  .replace("'", "")
+                  .split(".")[0];
+                console.log(cutData);
                 return str.includes(cutData) || cutData.includes(str);
               };
               const tData = data[accessor];

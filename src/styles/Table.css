@@ -61,6 +61,7 @@ th.down {
   aspect-ratio: 1/1;
   background-size: contain;
   margin-right: 10%;
+  background-repeat: no-repeat;
 }
 
 .icon-container {
