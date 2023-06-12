@@ -13,7 +13,7 @@ const TableBody = ({ tableData, columns, images }) => {
               return (
                 <>
                   {" "}
-                  {accessor === "championName" ? (
+                  {accessor === "championName" || accessor === "team_name" ? (
                     <td key={accessor}>
                       <div className="icon-container">
                         <div
