@@ -33,8 +33,15 @@ const Table = (columns, data, searchQuery) => {
       setTableData(initialData);
     } else {
       const filtered = initialData
-        .filter((data) =>
-          data[searchQuery].toLowerCase().includes(query.toLowerCase())
+        .filter(
+          (data) =>
+            data["team_name"].toLowerCase().includes(query.toLowerCase()) ||
+            data["championName"].toLowerCase().includes(query.toLowerCase()) ||
+            data["player_top"].toLowerCase().includes(query.toLowerCase()) ||
+            data["player_jungle"].toLowerCase().includes(query.toLowerCase()) ||
+            data["player_mid"].toLowerCase().includes(query.toLowerCase()) ||
+            data["player_bot"].toLowerCase().includes(query.toLowerCase()) ||
+            data["player_support"].toLowerCase().includes(query.toLowerCase())
         )
         .map((data) => data);
       setTableData(filtered);
