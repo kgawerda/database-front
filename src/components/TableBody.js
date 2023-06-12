@@ -7,17 +7,15 @@ const TableBody = ({ tableData, columns, images }) => {
             {columns.map(({ accessor }) => {
               const contains = (string) => {
                 const str = string.split(".")[0];
-                console.log(str)
-                return str.includes(data[accessor]) || data[accessor].includes(str) ;
-
-
+                const cutData = data[accessor].split(" ")[0];
+                return str.includes(cutData) || cutData.includes(str);
               };
               const tData = data[accessor];
               return (
                 <>
                   {" "}
                   {accessor === "championName" || accessor === "team_name" ? (
-                    <td key={accessor}>                      
+                    <td key={accessor}>
                       <div className="icon-container">
                         <div
                           className="icon"

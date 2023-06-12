@@ -1,7 +1,4 @@
 :root {
-  --pink: #c484a7;
-  --pink-light: #dca2cf;
-  --pink-lighter: #f2c7df;
   --white: #f2f2f2;
   --black: #333;
 }
@@ -35,7 +32,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: var(--pink-lighter);
+  background-color: var(--black);
   border-right: none;
   border-left: none;
 }
@@ -44,5 +41,4 @@ body,
 html {
   max-width: 100%;
   max-height: 100%;
-  overflow: hidden;
 }
