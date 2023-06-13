@@ -95,8 +95,34 @@ const Search = () => {
       setTableData(initialData);
     } else {
       const filtered = initialData
-        .filter((data) =>
-          data["championName"].toLowerCase().includes(query.toLowerCase())
+        .filter(
+          (data) =>
+            data["match_date"].toLowerCase().includes(query.toLowerCase()) ||
+            data["winner_team"].toLowerCase().includes(query.toLowerCase()) ||
+            data["blue_team_name"]
+              .toLowerCase()
+              .includes(query.toLowerCase()) ||
+            data["red_team_name"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_blue1"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_blue2"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_blue3"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_blue4"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_blue5"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_red1"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_red2"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_red3"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_red4"].toLowerCase().includes(query.toLowerCase()) ||
+            data["pick_red5"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_blue1"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_blue2"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_blue3"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_blue4"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_blue5"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_red1"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_red2"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_red3"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_red4"].toLowerCase().includes(query.toLowerCase()) ||
+            data["ban_red5"].toLowerCase().includes(query.toLowerCase())
         )
         .map((data) => data);
       setTableData(filtered);
