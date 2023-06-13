@@ -48,12 +48,12 @@ const More = () => {
           <div>loading</div>
         ) : (
           <>
-            <div className="blue" style={{ width: `${blue}vw` }}>
+            <div className="blue" style={{ width: `${blue}%` }}>
               <span className="text-container">
                 Blue Side Win Ratio: {blue}%
               </span>
             </div>
-            <div className="red" style={{ width: `${red}vw` }}>
+            <div className="red" style={{ width: `${red}%` }}>
               <span className="text-container">Red Side Win Ratio: {red}%</span>
             </div>
           </>
