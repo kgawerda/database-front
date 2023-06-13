@@ -17,7 +17,7 @@ body {
 body,
 input,
 button {
-  font-family: Courier, "Lucida Sans Typewriter", "Lucida Typewriter";
+  font-family: Georgia, 'Times New Roman', Times, serif, "Lucida Sans Typewriter", "Lucida Typewriter";
 }
 
 html::-webkit-scrollbar {

@@ -43,7 +43,9 @@ th.down {
 .table td {
   border-top: 1px solid gray;
   /* padding: 8px 20px; */
-  text-align: center;
+  /* text-align: center; */
+  text-align: start;
+  /* font-weight: bold; */
 }
 
 .table tbody tr:first-child td {
