@@ -44,3 +44,21 @@
   justify-content: center;
   text-align: center;
 }
+
+.witam {
+  width: 100vw;
+  color: var(--white);
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  position: absolute;
+  top: calc(7vh);
+  margin-top: 0;
+}
+
+.witam-grafika {
+  background-image: url("../imgs/lck.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%;
+}
