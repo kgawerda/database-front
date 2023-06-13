@@ -7,7 +7,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: var(--white);
+  background: var(--black);
   background-attachment: fixed;
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +32,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: var(--black);
+  background-color: var(--white);
   border-right: none;
   border-left: none;
 }
