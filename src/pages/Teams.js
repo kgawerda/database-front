@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Champions.css";
+import "../styles/Main.css";
 import TableBody from "../components/TableBody";
 import TableHead from "../components/TableHead";
 import "../styles/Table.css";

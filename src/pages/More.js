@@ -1,15 +1,11 @@
 import React from "react";
-import "../styles/Champions.css";
-import TableBody from "../components/TableBody";
-import TableHead from "../components/TableHead";
+import "../styles/Main.css";
 import "../styles/Table.css";
 import { useEffect, useState } from "react";
-import SearchBar from "../components/SearchBar";
 
 const More = () => {
-  const [tableData, setTableData] = useState([]);
-  const [initialData, setInitialData] = useState([]);
-  const [images, setImages] = useState({});
+  const [red, setRed] = useState(null);
+  const [blue, setBlue] = useState(null);
 
   const mockData =
     // '{ "data" : [' +
@@ -23,66 +19,35 @@ const More = () => {
     // '{ "championName":"Kwangdong Freecs" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
     // '{ "championName":"Hanwha Life Esports" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
     // '{ "championName":"Fredit BRION" , "wr":"0", "br":"0", "pr":"0", "presence":"0"}]}';
-    '{ "data" : [' +
-    '{ "championName":"Akali" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    '{ "championName":"Bel\'veth" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    '{ "championName":"Wukong" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
-    '{ "championName":"Vel\'koz" , "wr":"0", "br":"0", "pr":"0", "presence":"0"}]}';
-  const columns = [
-    { label: "Champion", accessor: "championName" },
-    { label: "Win Ratio", accessor: "wr" },
-    { label: "Ban Ratio", accessor: "br" },
-    { label: "Pick Ratio", accessor: "pr" },
-    { label: "Total Presence", accessor: "presence" },
-  ];
+    `{ "data" : [{ "blue":"40" },{ "red":"60" }]}`;
 
   useEffect(() => {
-    console.log(mockData);
-    const data = JSON.parse(mockData);
-    setTableData(data.data);
-    setInitialData(data.data);
-    const importAll = (r) => {
-      return r.keys().map(r);
+    // const data = JSON.parse(mockData);
+    // setRed(Object.values(data.data[1]));
+    // setBlue(Object.values(data.data[0]));
+    const getData = () => {
+      fetch("http://127.0.0.1:5000/sidewinrate")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (myJson) {
+          setBlue(Object.values(myJson[0]));
+          setRed(Object.values(myJson[1]));
+        });
     };
-    const imgs = importAll(
-      require.context("../imgs/champions", false, /\.(png|jpe?g|svg)$/)
-    );
-    setImages(imgs);
-  }, [mockData]);
-
-  const handleSorting = (sortField, sortOrder) => {
-    if (sortField) {
-      const sorted = [...tableData].sort((a, b) => {
-        return (
-          a[sortField].toString().localeCompare(b[sortField].toString(), "en", {
-            numeric: true,
-          }) * (sortOrder === "asc" ? 1 : -1)
-        );
-      });
-      setTableData(sorted);
-    }
-  };
-
-  const handleSearch = (query) => {
-    if (query === "") {
-      setTableData(initialData);
-    } else {
-      const filtered = initialData
-        .filter((data) =>
-          data["championName"].toLowerCase().includes(query.toLowerCase())
-        )
-        .map((data) => data);
-      setTableData(filtered);
-    }
-  };
+    getData();
+  }, []);
 
   return (
     <div className="main">
-      <SearchBar handleSearch={handleSearch} searchQuery="Champion" />
-      <table className="table">
-        <TableHead columns={columns} handleSorting={handleSorting} />
-        <TableBody columns={columns} tableData={tableData} images={images} />
-      </table>
+      <div className="wrapper">
+        <div className="blue" style={{ width: `${blue}vw` }}>
+          <span className="text-container">Blue Side Win Ratio: {blue}%</span>
+        </div>
+        <div className="red" style={{ width: `${red}vw` }}>
+          <span className="text-container">Red Side Win Ratio: {red}%</span>
+        </div>
+      </div>
     </div>
   );
 };
