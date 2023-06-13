@@ -41,7 +41,8 @@ th.down {
 
 .table td {
   border-top: 1px solid gray;
-  padding: 8px 20px;
+  /* padding: 8px 20px; */
+  text-align: center;
 }
 
 .table tbody tr:first-child td {
@@ -57,7 +58,7 @@ th.down {
 }
 
 .icon {
-  height: 5rem;
+  height: 4rem;
   aspect-ratio: 1/1;
   background-size: contain;
   margin-right: 10%;
