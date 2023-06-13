@@ -72,8 +72,7 @@ const Search = () => {
       return r.keys().map(r);
     };
     const imgs = importAll(
-      require.context("../imgs/teams", false, /\.(png|jpe?g|svg)$/),
-      require.context("../imgs/champions", false, /\.(png|jpe?g|svg)$/)
+      require.context("../imgs", true, /\.(png|jpe?g|svg)$/)
     );
     setImages(imgs);
   }, []);
