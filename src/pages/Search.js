@@ -11,44 +11,72 @@ const Search = () => {
   const [initialData, setInitialData] = useState([]);
   const [images, setImages] = useState({});
 
-  const mockData =
-    // '{ "data" : [' +
-    // '{ "championName":"Nongshim RedForce" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    // '{ "championName":"Gen.G" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
-    // '{ "championName":"T1" , "wr":"0", "br":"0", "pr":"0", "presence":"0"},' +
-    // '{ "championName":"Liiv SANDBOX" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    // '{ "championName":"DWG KIA" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
-    // '{ "championName":"KT Rolster" , "wr":"0", "br":"0", "pr":"0", "presence":"0"},' +
-    // '{ "championName":"DRX" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    // '{ "championName":"Kwangdong Freecs" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
-    // '{ "championName":"Hanwha Life Esports" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
-    // '{ "championName":"Fredit BRION" , "wr":"0", "br":"0", "pr":"0", "presence":"0"}]}';
-    '{ "data" : [' +
-    '{ "championName":"Akali" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    '{ "championName":"Bel\'veth" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
-    '{ "championName":"Wukong" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
-    '{ "championName":"Vel\'koz" , "wr":"0", "br":"0", "pr":"0", "presence":"0"}]}';
+  // const mockData =
+  //   // '{ "data" : [' +
+  //   // '{ "championName":"Nongshim RedForce" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
+  //   // '{ "championName":"Gen.G" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
+  //   // '{ "championName":"T1" , "wr":"0", "br":"0", "pr":"0", "presence":"0"},' +
+  //   // '{ "championName":"Liiv SANDBOX" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
+  //   // '{ "championName":"DWG KIA" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
+  //   // '{ "championName":"KT Rolster" , "wr":"0", "br":"0", "pr":"0", "presence":"0"},' +
+  //   // '{ "championName":"DRX" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
+  //   // '{ "championName":"Kwangdong Freecs" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
+  //   // '{ "championName":"Hanwha Life Esports" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
+  //   // '{ "championName":"Fredit BRION" , "wr":"0", "br":"0", "pr":"0", "presence":"0"}]}';
+  //   '{ "data" : [' +
+  //   '{ "championName":"Akali" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
+  //   '{ "championName":"Bel\'veth" , "wr":"60", "br":"10", "pr":"2", "presence":"12"},' +
+  //   '{ "championName":"Wukong" , "wr":"23", "br":"11", "pr":"23", "presence":"34"},' +
+  //   '{ "championName":"Vel\'koz" , "wr":"0", "br":"0", "pr":"0", "presence":"0"}]}';
   const columns = [
-    { label: "Champion", accessor: "championName" },
-    { label: "Win Ratio", accessor: "wr" },
-    { label: "Ban Ratio", accessor: "br" },
-    { label: "Pick Ratio", accessor: "pr" },
-    { label: "Total Presence", accessor: "presence" },
+    { label: "Date", accessor: "match_date" },
+    { label: "Winner", accessor: "winner_team" },
+    { label: "Blue Team", accessor: "blue_team_name" },
+    { label: "Pick Top", accessor: "pick_blue1" },
+    { label: "Pick Jgl", accessor: "pick_blue2" },
+    { label: "Pick Mid", accessor: "pick_blue3" },
+    { label: "Pick Bot", accessor: "pick_blue4" },
+    { label: "Pick Sup", accessor: "pick_blue5" },
+    { label: "Ban 1", accessor: "ban_blue1" },
+    { label: "Ban 2", accessor: "ban_blue2" },
+    { label: "Ban 3", accessor: "ban_blue3" },
+    { label: "Ban 4", accessor: "ban_blue4" },
+    { label: "Ban 5", accessor: "ban_blue5" },
+    { label: "Red Team", accessor: "red_team_name" },
+    { label: "Pick Top", accessor: "pick_red1" },
+    { label: "Pick Jgl", accessor: "pick_red2" },
+    { label: "Pick Mid", accessor: "pick_red3" },
+    { label: "Pick Bot", accessor: "pick_red4" },
+    { label: "Pick Sup", accessor: "pick_red5" },
+    { label: "Ban 1", accessor: "ban_red1" },
+    { label: "Ban 2", accessor: "ban_red2" },
+    { label: "Ban 3", accessor: "ban_red3" },
+    { label: "Ban 4", accessor: "ban_red4" },
+    { label: "Ban 5", accessor: "ban_red5" },
   ];
 
   useEffect(() => {
-    console.log(mockData);
-    const data = JSON.parse(mockData);
-    setTableData(data.data);
-    setInitialData(data.data);
+    const getData = () => {
+      fetch("http://127.0.0.1:5000/alldata")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (myJson) {
+          setTableData(myJson);
+          setInitialData(myJson);
+        });
+    };
+    getData();
+
     const importAll = (r) => {
       return r.keys().map(r);
     };
     const imgs = importAll(
+      require.context("../imgs/teams", false, /\.(png|jpe?g|svg)$/),
       require.context("../imgs/champions", false, /\.(png|jpe?g|svg)$/)
     );
     setImages(imgs);
-  }, [mockData]);
+  }, []);
 
   const handleSorting = (sortField, sortOrder) => {
     if (sortField) {
@@ -78,7 +106,7 @@ const Search = () => {
 
   return (
     <div className="main">
-      <SearchBar handleSearch={handleSearch} searchQuery="Champion" />
+      <SearchBar handleSearch={handleSearch} searchQuery="all" />
       <table className="table">
         <TableHead columns={columns} handleSorting={handleSorting} />
         <TableBody columns={columns} tableData={tableData} images={images} />

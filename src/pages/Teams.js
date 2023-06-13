@@ -77,7 +77,7 @@ const Teams = () => {
 
   return (
     <div className="main">
-      <SearchBar handleSearch={handleSearch} searchQuery="team_name" />
+      <SearchBar handleSearch={handleSearch} searchQuery="team or player" />
       <table className="table">
         <TableHead columns={columns} handleSorting={handleSorting} />
         <TableBody columns={columns} tableData={tableData} images={images} />

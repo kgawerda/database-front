@@ -35,6 +35,26 @@ const TableBody = ({ tableData, columns, images }) => {
                   ) : (
                     <td key={accessor}>{tData}</td>
                   )}
+                  {accessor === "winner_team" ||
+                  accessor.includes("pick_") ||
+                  accessor.includes("ban_") ||
+                  accessor === "blue_team_name" ||
+                  accessor === "red_team_name" ? (
+                    <td key={accessor}>
+                      <div className="icon-container">
+                        <div
+                          className="icon"
+                          style={{
+                            backgroundImage: `url(${
+                              images[images.findIndex(contains)]
+                            })`,
+                          }}
+                        ></div>
+                      </div>
+                    </td>
+                  ) : (
+                    <td key={accessor}>{tData}</td>
+                  )}
                 </>
               );
             })}
