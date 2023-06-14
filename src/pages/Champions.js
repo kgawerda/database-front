@@ -13,8 +13,8 @@ const Champions = () => {
 
   const columns = [
     { label: "Champion", accessor: "championName" },
-    { label: "wins", accessor: "wins" },
-    { label: "losses", accessor: "losses" },
+    { label: "Wins", accessor: "wins" },
+    { label: "Losses", accessor: "losses" },
     { label: "Win Ratio", accessor: "wr" },
     { label: "Bans", accessor: "bans" },
     { label: "Ban Ratio", accessor: "br" },
