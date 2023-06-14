@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <>
       <p className="witam">
-        Witaj przywoływaczu na naszej stronie z danymi LCK Summer 2022!
+        Welcome summoner to LCK SUMMER 2022 statistics site!
       </p>
       <div className="main witam-grafika"></div>
     </>
