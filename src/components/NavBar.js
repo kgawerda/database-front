@@ -9,12 +9,12 @@ const NavBar = () => {
         <ul>
           <li>
             <Link className="nav-link top-left" to="/more">
-              More
+              Sides winrate
             </Link>
           </li>
           <li>
             <Link className="nav-link top-right" to="/search">
-              Search
+              Match stats
             </Link>
           </li>
           <li>
